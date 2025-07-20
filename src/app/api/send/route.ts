@@ -88,7 +88,7 @@ export async function POST(request: Request) {
     }
 
     // Return success response
-    return NextResponse.json({ success: true, data });
+    return NextResponse.json({ success: true });
   } catch (error: any) {
     console.error('Unexpected error:', error);
     return NextResponse.json(
