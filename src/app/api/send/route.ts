@@ -24,55 +24,58 @@ export async function POST(request: Request) {
 
     // Parse the request body
     const { name, email, subject, message } = await request.json();
-    
+
     // Validate the required fields
-    if (!name || !email || !subject || !message) {
+    if (!name || !email || !message) {
       return NextResponse.json(
-        { error: 'Missing required fields' },
+        { error: 'Missing required fields', details: { name, email, message } },
         { status: 400 }
       );
     }
-    
-    try {
-      // Send the email using Resend
-      const data = await resend.emails.send({
-        from: 'onboarding@resend.dev', // Using Resend's default verified domain
-        to: ['abhijit.sk@somaiya.edu'], // Using array format for better compatibility
-        reply_to: email,
-        subject: `Portfolio Contact: ${subject}`,
-        html: `
-          <h1>New Contact Form Submission</h1>
+
+    // Set the recipient email
+    const recipientEmail = process.env.RECIPIENT_EMAIL || 'abhijit.sk@somaiya.edu';
+
+    // Send the email using plain HTML instead of React Email components
+    const { data, error } = await resend.emails.send({
+      from: 'Contact Form <onboarding@resend.dev>',
+      to: [recipientEmail],
+      subject: subject || `New message from ${name}`,
+      reply_to: email,
+      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #0070f3;">New Contact Form Submission</h2>
           <p><strong>Name:</strong> ${name}</p>
           <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Subject:</strong> ${subject}</p>
-          <p><strong>Message:</strong></p>
-          <p>${message}</p>
-        `,
-      });
-      
-      console.log('Email sent successfully:', data);
-      return NextResponse.json({ success: true, data });
-    } catch (sendError: any) {
-      console.error('Error in Resend API:', sendError);
+          <p><strong>Message:</strong> ${message}</p>
+        </div>
+      `,
+    });
+
+    // Check for errors
+    if (error) {
+      console.error('Error sending email:', error);
       return NextResponse.json(
         { 
-          error: 'Failed to send email via Resend API', 
-          details: {
-            message: sendError.message || 'Unknown error',
-            code: sendError.statusCode || 500
-          }
+          error: 'Failed to send email', 
+          details: error 
         },
         { status: 500 }
       );
     }
+
+    // Return success response
+    return NextResponse.json({ success: true, data });
   } catch (error: any) {
-    console.error('General error in API route:', error);
+    console.error('Unexpected error:', error);
     return NextResponse.json(
       { 
-        error: 'Failed to process request',
-        details: {
-          message: error.message || 'Unknown error'
-        }
+        error: 'An unexpected error occurred', 
+        details: { 
+          message: error.message || 'Unknown error',
+          stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
+        } 
       },
       { status: 500 }
     );
