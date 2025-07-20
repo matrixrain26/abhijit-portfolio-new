@@ -5,16 +5,18 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
-const navItems = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Contact', href: '#contact' },
+const projectItems = [
+  { name: 'Foray into Product Management', href: '/projects/product-management' },
+  { name: 'Half Marathons', href: '/projects/half-marathons' },
+  { name: 'Biocon Trade', href: '/projects/biocon-trade' },
+  { name: 'Career Advancement', href: '/projects/career-advancement' },
+  { name: 'Fitness Journey', href: '/projects/fitness-journey' },
 ];
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,44 +31,22 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
   return (
     <header 
       className={`fixed w-full z-50 transition-all duration-300 ${
         scrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
       }`}
     >
-      <div className="container-custom flex justify-between items-center">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Link href="#home" className="text-2xl font-heading font-bold text-primary">
-            Abhijit Khadilkar
-          </Link>
-        </motion.div>
-
-        {/* Desktop Navigation */}
+      <div className="container-custom flex justify-end items-center">
+        {/* Desktop Navigation - Empty header as requested */}
         <nav className="hidden md:block">
-          <ul className="flex space-x-8">
-            {navItems.map((item, index) => (
-              <motion.li
-                key={item.name}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Link
-                  href={item.href}
-                  className={`font-medium hover:text-primary transition-colors ${
-                    scrolled ? 'text-secondary' : 'text-secondary'
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              </motion.li>
-            ))}
-          </ul>
+          <div className="relative">
+            {/* Projects dropdown removed as requested */}
+          </div>
         </nav>
 
         {/* Mobile Navigation Toggle */}
@@ -88,19 +68,22 @@ export default function Header() {
           className="md:hidden bg-white shadow-lg"
         >
           <div className="container-custom py-4">
-            <ul className="space-y-4">
-              {navItems.map((item) => (
-                <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="block py-2 text-secondary hover:text-primary transition-colors"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <div className="space-y-4">
+              <div className="font-medium text-secondary mb-2">Projects</div>
+              <ul className="space-y-2 pl-4">
+                {projectItems.map((item) => (
+                  <li key={item.name}>
+                    <Link
+                      href={item.href}
+                      className="block py-2 text-secondary hover:text-primary transition-colors"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </motion.div>
       )}

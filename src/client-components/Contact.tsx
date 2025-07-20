@@ -89,13 +89,14 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="flex flex-col md:flex-row md:justify-between gap-16 mx-auto max-w-6xl px-8">
           {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
+            className="bg-white rounded-xl shadow-xl p-8 flex-1 flex flex-col w-full md:w-[45%]"
           >
             <h3 className="text-2xl font-bold text-secondary mb-6">Contact Information</h3>
             
@@ -143,23 +144,7 @@ export default function Contact() {
               </div>
             </div>
             
-            <div className="mt-10">
-              <h3 className="text-xl font-bold text-secondary mb-4">Connect With Me</h3>
-              <div className="flex space-x-4">
-                <a href="https://www.linkedin.com/in/abhijit-khadilkar-04232aab" target="_blank" rel="noopener noreferrer" className="bg-primary hover:bg-primary-dark text-white p-3 rounded-full transition-colors">
-                  <FaLinkedin />
-                </a>
-                <a href="https://x.com/askhadilkar" target="_blank" rel="noopener noreferrer" className="bg-primary hover:bg-primary-dark text-white p-3 rounded-full transition-colors">
-                  <FaTwitter />
-                </a>
-                <a href="https://www.instagram.com/abhijit_khadilkar" target="_blank" rel="noopener noreferrer" className="bg-primary hover:bg-primary-dark text-white p-3 rounded-full transition-colors">
-                  <FaInstagram />
-                </a>
-                <a href="https://github.com/matrixrain26" target="_blank" rel="noopener noreferrer" className="bg-primary hover:bg-primary-dark text-white p-3 rounded-full transition-colors">
-                  <FaGithub />
-                </a>
-              </div>
-            </div>
+
           </motion.div>
 
           {/* Contact Form */}
@@ -168,9 +153,8 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="h-fit"
+            className="bg-white rounded-xl shadow-xl p-8 flex-1 flex flex-col w-full md:w-[45%]"
           >
-            <div className="bg-white rounded-lg shadow-lg p-8" style={{ maxHeight: '480px', overflowY: 'auto' }}>
               <h3 className="text-2xl font-bold text-secondary mb-6">Send Me a Message</h3>
               
               {submitStatus && (
@@ -269,7 +253,6 @@ export default function Contact() {
                   )}
                 </button>
               </form>
-            </div>
           </motion.div>
         </div>
       </div>
