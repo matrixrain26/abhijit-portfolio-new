@@ -8,7 +8,9 @@
   "regions": ["bom1"],
   "github": {
     "silent": true,
-    "autoAlias": true
+    "autoAlias": true,
+    "enabled": true,
+    "branch": "master"
   },
   "env": {
     "RESEND_API_KEY": "@resend_api_key"
