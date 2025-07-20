@@ -20,7 +20,7 @@ const projectsData = [
     title: 'Foray into Product Management',
     description: 'My journey transitioning into product management in the fintech industry.',
     category: 'Career',
-    image: '/placeholder-1.jpg',
+    image: '/local_profile_image/858112681_218174.jpg',
     slug: 'product-management',
   },
   {
@@ -36,7 +36,7 @@ const projectsData = [
     title: 'Biocon Trade',
     description: 'Analysis and execution of a profitable investment in Biocon.',
     category: 'Finance',
-    image: '/placeholder-3.jpg',
+    image: '/local_profile_image/858112681_218174.jpg',
     slug: 'biocon-trade',
   },
   {
@@ -44,7 +44,7 @@ const projectsData = [
     title: 'Career Advancement',
     description: 'Key milestones and strategies that helped advance my career in fintech.',
     category: 'Career',
-    image: '/placeholder-4.jpg',
+    image: '/local_profile_image/858112681_218174.jpg',
     slug: 'career-advancement',
   },
   {
@@ -52,7 +52,7 @@ const projectsData = [
     title: 'Fitness Journey',
     description: 'My personal transformation through fitness and healthy lifestyle choices.',
     category: 'Fitness',
-    image: '/placeholder-5.jpg',
+    image: '/local_half_marathon/WhatsApp Image 2025-07-20 at 14.21.28 (1).jpeg',
     slug: 'fitness-journey',
   },
 ];
@@ -113,18 +113,13 @@ export default function Projects() {
               className="card group"
             >
               <div className="relative h-60 overflow-hidden">
-                {/* Placeholder colored div until actual images are provided */}
-                <div className={`absolute inset-0 bg-gradient-to-br from-primary to-secondary flex items-center justify-center`}>
-                  <span className="text-white text-xl font-bold">{project.title}</span>
-                </div>
-                {/* Uncomment when actual images are available */}
-                {/* <Image
+                <Image
                   src={project.image}
                   alt={project.title}
                   fill
                   style={{ objectFit: 'cover' }}
                   className="group-hover:scale-110 transition-transform duration-500"
-                /> */}
+                />
                 <div className="absolute top-4 right-4 bg-white text-primary px-2 py-1 rounded-full text-xs font-medium">
                   {project.category}
                 </div>

@@ -5,8 +5,8 @@ import Image from 'next/image';
 
 export default function About() {
   return (
-    <section id="about" className="py-16 px-4 bg-gray-50">
-      <div className="container mx-auto">
+    <section id="about" className="section bg-gray-50">
+      <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -14,8 +14,8 @@ export default function About() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-2 text-blue-600">About Me</h2>
-          <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
+          <h2 className="text-secondary mb-4">About Me</h2>
+          <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
         </motion.div>
         
         <div className="flex flex-col md:flex-row items-center justify-between">
@@ -29,7 +29,7 @@ export default function About() {
           >
             <div className="relative w-full h-80 md:h-96 overflow-hidden rounded-lg shadow-xl">
               <Image
-                src="/about.jpg"
+                src="/local_profile_image/858112681_218174.jpg"
                 alt="Abhijit Khadilkar working"
                 fill
                 style={{ objectFit: 'cover' }}

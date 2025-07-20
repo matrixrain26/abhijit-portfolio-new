@@ -48,7 +48,7 @@ export default function Hero() {
             className="relative w-64 h-64 md:w-80 md:h-80 overflow-hidden rounded-full border-4 border-blue-600"
           >
             <Image
-              src="/profile.jpg"
+              src="/local_profile_image/858112681_218174.jpg"
               alt="Abhijit Khadilkar"
               fill
               style={{ objectFit: 'cover' }}
