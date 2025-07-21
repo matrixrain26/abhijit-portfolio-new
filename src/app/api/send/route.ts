@@ -44,6 +44,7 @@ export async function POST(request: Request) {
 
     // Send the email using plain HTML instead of React Email components
     try {
+      console.log('Sending email with Resend...');
       const result = await resend.emails.send({
         from: 'Contact Form <onboarding@resend.dev>',
         to: [recipientEmail],
@@ -61,6 +62,9 @@ export async function POST(request: Request) {
           </div>
         `
       });
+      
+      // Log the result for debugging
+      console.log('Resend API response:', JSON.stringify(result));
       
       // Return success response with the result
       return NextResponse.json({ success: true, data: result });
