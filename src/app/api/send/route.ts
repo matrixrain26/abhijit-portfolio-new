@@ -44,7 +44,7 @@ export async function POST(request: Request) {
 
     // Send the email using plain HTML instead of React Email components
     try {
-      const { data, error } = await resend.emails.send({
+      const result = await resend.emails.send({
         from: 'Contact Form <onboarding@resend.dev>',
         to: [recipientEmail],
         subject: subject || `New message from ${name}`,
@@ -62,17 +62,8 @@ export async function POST(request: Request) {
         `
       });
       
-      // Check for error from Resend API
-      if (error) {
-        console.error('Resend API error:', error);
-        return NextResponse.json(
-          { error: 'Failed to send email', details: error },
-          { status: 500 }
-        );
-      }
-
-      // Return success response
-      return NextResponse.json({ success: true, data: data });
+      // Return success response with the result
+      return NextResponse.json({ success: true, data: result });
     } catch (error: any) {
       console.error('Unexpected error:', error);
       return NextResponse.json(
@@ -86,9 +77,6 @@ export async function POST(request: Request) {
         { status: 500 }
       );
     }
-
-    // Return success response
-    return NextResponse.json({ success: true });
   } catch (error: any) {
     console.error('Unexpected error:', error);
     return NextResponse.json(
