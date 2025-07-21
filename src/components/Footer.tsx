@@ -31,7 +31,7 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-3 text-blue-400">Follow Me</h3>
             <div className="flex space-x-4">
               <a 
-                href="https://twitter.com" 
+                href="https://x.com/askhadilkar" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-gray-800 hover:bg-blue-600 h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300"
@@ -39,7 +39,7 @@ export default function Footer() {
                 <FaTwitter className="text-white" />
               </a>
               <a 
-                href="https://linkedin.com" 
+                href="https://www.linkedin.com/in/abhijit-khadilkar-04232aab" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-gray-800 hover:bg-blue-600 h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300"
@@ -47,7 +47,7 @@ export default function Footer() {
                 <FaLinkedinIn className="text-white" />
               </a>
               <a 
-                href="https://instagram.com" 
+                href="https://instagram.com/abhijit_khadilkar" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-gray-800 hover:bg-blue-600 h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300"
@@ -55,7 +55,7 @@ export default function Footer() {
                 <FaInstagram className="text-white" />
               </a>
               <a 
-                href="https://github.com" 
+                href="https://github.com/matrixrain26" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-gray-800 hover:bg-blue-600 h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300"
